@@ -17,21 +17,43 @@ const theme = createTheme({
             main: '#18A0FB'
         },
         type: 'dark',
-    }
+    },
+   
 })
+
+const useStyles = makeStyles({
+    toolbar: theme.mixins.toolbar,
+    hero: {
+        height: '540px',
+        backgroundImage: 'url("https://source.unsplash.com/random")',
+        // backgroundImage: 'url("../../static/houseMobile.jpeg")',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+    },
+    page: {
+        marginTop: '20px',
+    },
+}) 
 
 
 
 export default function Layout({children}) {
-   
+    const classes = useStyles();
     return (
         <div>
              <CssBaseline />
            <ThemeProvider theme = {theme}>
-                <HeaderNew />
-                <Container>
-                    <div>{children}</div>
+               <div className={classes.hero}>
+                    <HeaderNew />
+                </div>
+                <Container >
+                    
+                    <div className={classes.page}>
+                        <div className={classes.toolbar}></div>
+                        {children}
+                    </div>
                 </Container>
+               
             </ThemeProvider>
            
         </div>

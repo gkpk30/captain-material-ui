@@ -13,8 +13,23 @@ import Fade from '@material-ui/core/Fade';
 import ArrowDropDownOutlinedIcon from '@material-ui/icons/ArrowDropDownOutlined';
 import AppsOutlinedIcon from '@material-ui/icons/AppsOutlined';
 import ViewArrayIcon from '@material-ui/icons/ViewArray';
+import ViewListIcon from '@material-ui/icons/ViewList';
 
 const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+    },
+    toolbar: theme.mixins.toolbar,
+    wrapper: {
+      flexDirection: 'row-reverse',
+    },
+    dropdownListMenu: {
+      display: 'flex',
+      width: '250px',
+      flexDirection: 'column',
+      marginLeft: '15px',
+      alignItems: 'end',
+    },
     logo: {
       fontSize: '1.9rem',
       [theme.breakpoints.down('md')]: {
@@ -33,9 +48,6 @@ const useStyles = makeStyles(theme => ({
     iconLogo: {
       color: 'yellow',
       fontSize: '3rem',
-    },
-    icons: {
-      fontSize: '1rem',
     },
   }));
 
@@ -63,7 +75,7 @@ const HeaderNew = () => {
   const classes = useStyles();
     return (
         <>
-            <AppBar  color="primary">
+            <AppBar  color='transparent' className={classes.root}>
                 <Container >
                     <Toolbar style={{justifyContent: 'space-between'}}> 
                     
@@ -71,12 +83,15 @@ const HeaderNew = () => {
                         <Tabs 
                             onChange={handleClickTab} 
                             indicatorColor = 'secondary' 
-                            value ={value} 
-                            className={classes.tabsContainer}
+                            value ={value}       
                         >
-                            <Tab icon={<ArrowDropDownOutlinedIcon/>} className={classes.icons} style={{flexDirection: 'row-reverse'}} label= 'Treatment Types' onClick={handleOpenTreatmentTypes} aria-controls="open-treatment-menu" /> 
+                            <Tab icon={<ArrowDropDownOutlinedIcon/>}
+                                
+                                 label= 'Treatment Types' 
+                                 onClick={handleOpenTreatmentTypes} 
+                                 aria-controls="open-treatment-menu"
+                                 classes={{wrapper:classes.wrapper}} /> 
                             
-                            {/* <ArrowDropDownOutlinedIcon style={{alignSelf: 'center'}} /> */}
                             <Tab label= 'About Us'/>
                             <Tab label= 'Contact Us'/>
                             <Button color='secondary' variant = 'contained'>Profile</Button>
@@ -85,6 +100,7 @@ const HeaderNew = () => {
                     </Toolbar>
                 </Container>
             </AppBar>
+            
                                 <Menu
                                    style={{marginTop: '50px'}}
                                     id="open-treatment-menu"
@@ -93,11 +109,19 @@ const HeaderNew = () => {
                                     open={Boolean(anchorEl)}
                                     onClose={handleCloseTreatmentTypes}
                                     TransitionComponent={Fade}
-                                  
+                                  classes={{list:classes.dropdownListMenu}}
                                 >
-                                    <MenuItem onClick={handleCloseTreatmentTypes}>Profile</MenuItem>
-                                    <MenuItem onClick={handleCloseTreatmentTypes}>My account</MenuItem>
-                                    <MenuItem onClick={handleCloseTreatmentTypes}>Logout</MenuItem>
+                                  {/* this creates a margin to clear the toolbar */}
+                                  {/* <div className={classes.toolbar}></div>  */}
+
+                                    <MenuItem onClick={handleCloseTreatmentTypes}>Precision Injection</MenuItem>
+                                    <MenuItem onClick={handleCloseTreatmentTypes}>Borate Treatments</MenuItem>
+                                    <MenuItem onClick={handleCloseTreatmentTypes}>Foam Treatments</MenuItem>
+                                    <MenuItem onClick={handleCloseTreatmentTypes}>Preventative Treatments</MenuItem>
+                                    <MenuItem onClick={handleCloseTreatmentTypes}>Pre-Construction Treatments</MenuItem>
+                                    <MenuItem onClick={handleCloseTreatmentTypes}>Soil Treatments</MenuItem>
+                                    <MenuItem onClick={handleCloseTreatmentTypes}>Cellulose Removal</MenuItem>
+                                    <MenuItem onClick={handleCloseTreatmentTypes}>Traditional Tent Fumigation</MenuItem>
                                 </Menu>
         </>
     )
