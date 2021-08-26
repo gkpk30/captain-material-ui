@@ -4,7 +4,6 @@ import HeaderNew from './HeaderNew'
 import { makeStyles } from '@material-ui/core'
 import {createTheme } from '@material-ui/core'
 import {ThemeProvider} from '@material-ui/core'
-import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 
@@ -16,7 +15,7 @@ const theme = createTheme({
         secondary: {
             main: '#18A0FB'
         },
-        type: 'dark',
+        
     },
    
 })
@@ -25,13 +24,13 @@ const useStyles = makeStyles({
     toolbar: theme.mixins.toolbar,
     hero: {
         height: '540px',
-        backgroundImage: 'url("https://source.unsplash.com/random")',
+        backgroundImage: 'url("https://source.unsplash.com/-y4dVPa8EQI/1600x900")',
         // backgroundImage: 'url("../../static/houseMobile.jpeg")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     },
     page: {
-        marginTop: '20px',
+        // marginTop: '20px',
     },
 }) 
 
@@ -43,17 +42,11 @@ export default function Layout({children}) {
         <div>
              <CssBaseline />
            <ThemeProvider theme = {theme}>
-               <div className={classes.hero}>
-                    <HeaderNew />
-                </div>
-                <Container >
-                    
+              
+                    <HeaderNew />                  
                     <div className={classes.page}>
-                        <div className={classes.toolbar}></div>
                         {children}
                     </div>
-                </Container>
-               
             </ThemeProvider>
            
         </div>

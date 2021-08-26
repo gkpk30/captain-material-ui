@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+// import {Link} from 'gatsby'
+import { Link } from "gatsby-theme-material-ui";
 import { makeStyles , useTheme } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -20,6 +22,7 @@ const useStyles = makeStyles(theme => ({
       flexGrow: 1,
     },
     toolbar: theme.mixins.toolbar,
+    links: theme.mixins.Link,
     wrapper: {
       flexDirection: 'row-reverse',
     },
@@ -49,6 +52,13 @@ const useStyles = makeStyles(theme => ({
       color: 'yellow',
       fontSize: '3rem',
     },
+    link: {
+      textDecoration: 'none',
+      textAlign: 'center',
+      '&:hover': {
+        textDecoration: 'none',
+      },
+    },
   }));
 
 
@@ -74,26 +84,32 @@ const HeaderNew = () => {
 
   const classes = useStyles();
     return (
-        <>
+      
+        <div>
             <AppBar  color='transparent' className={classes.root}>
                 <Container >
-                    <Toolbar style={{justifyContent: 'space-between'}}> 
+                    <Toolbar style={{justifyContent: 'space-between', alignItems:'center'}}> 
                     
-                            <Typography>Captain Termite Control </Typography>
+                            <Typography component={Link} to='/' classes={{root:classes.link}}>Captain Termite Control </Typography>
                         <Tabs 
                             onChange={handleClickTab} 
                             indicatorColor = 'secondary' 
                             value ={value}       
                         >
-                            <Tab icon={<ArrowDropDownOutlinedIcon/>}
-                                
+                            <Tab 
+                                icon={<ArrowDropDownOutlinedIcon/>}
                                  label= 'Treatment Types' 
                                  onClick={handleOpenTreatmentTypes} 
                                  aria-controls="open-treatment-menu"
-                                 classes={{wrapper:classes.wrapper}} /> 
-                            
-                            <Tab label= 'About Us'/>
-                            <Tab label= 'Contact Us'/>
+                                 classes={{wrapper:classes.wrapper, root:classes.link}}
+                                 component={Link}
+                                 to='/'
+                                 /> 
+                            <Tab component={Link} to="/about" label= 'About Us'classes={{root:classes.link}}/>   
+                            {/* <Link to="/about" classes={{root:classes.link}} className={classes.links}><Tab label= 'About Us'/></Link> */}
+                           
+                            {/* <Tab label= 'Contact Us'/> */}
+                            <Tab label= 'Link About'><Link to='/about'/></Tab>
                             <Button color='secondary' variant = 'contained'>Profile</Button>
                         </Tabs>
                         {/* <Button color='secondary' variant = 'contained'>Profile</Button> */}
@@ -123,7 +139,7 @@ const HeaderNew = () => {
                                     <MenuItem onClick={handleCloseTreatmentTypes}>Cellulose Removal</MenuItem>
                                     <MenuItem onClick={handleCloseTreatmentTypes}>Traditional Tent Fumigation</MenuItem>
                                 </Menu>
-        </>
+        </div>
     )
 }
 
