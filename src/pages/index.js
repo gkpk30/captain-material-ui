@@ -1,7 +1,7 @@
 import React from "react"
+// import Layout from '../components/Layout'
 import { makeStyles } from '@material-ui/core'
 import Container from '@material-ui/core/Container'
-import Layout from '../components/Layout'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography'
 
@@ -23,15 +23,17 @@ contentArea1: {
 
 export default function Home() {
   const classes = useStyles();
+  // const url = location.pathname ? location.pathname : '';
+  // console.log('current location of About page: ',url);
   return (
   
-<Layout>
+<div>
   <div className={classes.hero}>
   </div>
   <Paper elevation={3} className={classes.contentArea1}>
   <Typography variant='h4'>hello world</Typography>
   </Paper>
-</Layout>
+</div>
     
  
   ) 

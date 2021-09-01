@@ -8,18 +8,10 @@ module.exports = {
   /* Your site config here */
   plugins: [
     {
-    resolve: `gatsby-theme-material-ui`,
-    options: {
-      webFontsConfig: {
-        fonts: {
-          google: [
-            {
-              family: `Montserrat`,
-              variants: [`300`, `400`, `500`],
-            },
-          ],
-        },
-      },
-    },
-  },],
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout.js`)
+      }
+    }
+  ],
 }

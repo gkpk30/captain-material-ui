@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     },
     toolbar: theme.mixins.toolbar,
     links: theme.mixins.Link,
+    labelIcon : {
+      paddingTop : '6px',
+    },
     wrapper: {
       flexDirection: 'row-reverse',
     },
@@ -96,20 +99,30 @@ const HeaderNew = () => {
                             indicatorColor = 'secondary' 
                             value ={value}       
                         >
+                           
                             <Tab 
                                 icon={<ArrowDropDownOutlinedIcon/>}
                                  label= 'Treatment Types' 
                                  onClick={handleOpenTreatmentTypes} 
                                  aria-controls="open-treatment-menu"
-                                 classes={{wrapper:classes.wrapper, root:classes.link}}
+                                 classes={{wrapper:classes.wrapper, root:classes.link, labelIcon:classes.labelIcon}}
                                  component={Link}
-                                 to='/'
+                                 to='/treatments' 
                                  /> 
-                            <Tab component={Link} to="/about" label= 'About Us'classes={{root:classes.link}}/>   
-                            {/* <Link to="/about" classes={{root:classes.link}} className={classes.links}><Tab label= 'About Us'/></Link> */}
-                           
-                            {/* <Tab label= 'Contact Us'/> */}
-                            <Tab label= 'Link About'><Link to='/about'/></Tab>
+                            <Tab 
+                                component={Link} 
+                                to="/about" 
+                                label= 'About Us'
+                                classes={{wrapper:classes.wrapper, root:classes.link}}
+                                />   
+                          
+                            <Tab
+                                label='contact' 
+                                component={Link} 
+                                to='/contact'
+                                classes={{wrapper:classes.wrapper, root:classes.link}}
+                               />
+                            
                             <Button color='secondary' variant = 'contained'>Profile</Button>
                         </Tabs>
                         {/* <Button color='secondary' variant = 'contained'>Profile</Button> */}

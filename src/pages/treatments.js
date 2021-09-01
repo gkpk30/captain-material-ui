@@ -1,6 +1,6 @@
 import React from 'react'
 // import Layout from '../components/Layout'
-import {graphql, useStaticQuery} from 'gatsby'
+import { graphql } from "gatsby"
 import { makeStyles } from '@material-ui/core'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper';
@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
     hero: {
         height: '300px',
-        backgroundImage: 'url("https://source.unsplash.com/IWenq-4JHqo/1600x900")',
+        backgroundImage: 'url("https://source.unsplash.com/h5QNclJUiA8/1600x900")',
         // backgroundImage: 'url("../../static/houseMobile.jpeg")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
@@ -25,23 +25,21 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-const About = () => {
-    // const url = location.pathname ? location.pathname : '';
-    // console.log('current location of About page: ',url);
-    // const sitePath = data;
-    // console.log('sitePath: ', data)
+const Treatments = () => {
     const classes = useStyles();
 
+    // const urlTreatment = location.pathname ? location.pathname : '';
+    // console.log('current location of Treatment page: ',urlTreatment);
 
     return (
-        <div>
+        <div >
             <div className={classes.hero}>
             </div>
             <div className={classes.toolbar}></div>
            <Container>
                <Paper className={classes.content}>
                    <Box padding={4}>
-                   <Typography variant='h2'>About us</Typography>
+                   <Typography variant='h2'>Treatments</Typography>
                    </Box>
                </Paper>
            </Container>
@@ -50,7 +48,7 @@ const About = () => {
     )
 }
 
-export default About
+export default Treatments
 
 
 // export const query = graphql`
@@ -60,3 +58,4 @@ export default About
 //     }
 //   }
 // `
+
