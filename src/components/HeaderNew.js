@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 // import {Link} from 'gatsby'
 import { Link } from "gatsby-theme-material-ui";
+// import { useParams } from "gatsby"
 import { makeStyles , useTheme } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -56,6 +57,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: '3rem',
     },
     link: {
+      fontWeight: '600',
       textDecoration: 'none',
       textAlign: 'center',
       '&:hover': {
@@ -65,12 +67,43 @@ const useStyles = makeStyles(theme => ({
   }));
 
 
-const HeaderNew = () => {
-    const [value, setValue] = useState(0)
+
+const HeaderNew = ({location}) => {
+
+  
+  const tabNameToIndex = {
+    0: "/treatments", 
+    1: "/about" , 
+    2: "/contact"
+  }
+  
+  const indexToTab = {
+    "/treatments": 0,
+    "/about": 1,
+    "/contact": 2
+  }
+  
+    const [selectedTab, setSelectedTab] = useState(null)
     const [anchorEl, setAnchorEl] = useState(null);
+    console.log("Location: ", location.pathname)
+    
+    const path = location.pathname
+    console.log(path)
+    
+  
+    useEffect(() => {
+      console.log('use effect ran')
+      console.log('use effect path: ', path)
+      if (path === ('/treatments' || '/treatments/')) setSelectedTab(0)
+          else if (path === ('/about' || '/about/')) setSelectedTab(1)
+          else if (path === ('/contact' || '/contact/')) setSelectedTab(2)
+          else setSelectedTab(null)
+    })
+
 
     const handleClickTab = (e, newValue) => {
-        setValue(newValue);
+        setSelectedTab(newValue);
+        console.log(e)
     }
 
     
@@ -89,7 +122,7 @@ const HeaderNew = () => {
     return (
       
         <div>
-            <AppBar  color='transparent' className={classes.root}>
+            <AppBar position="static"  color='transparent' className={classes.root}>
                 <Container >
                     <Toolbar style={{justifyContent: 'space-between', alignItems:'center'}}> 
                     
@@ -97,7 +130,8 @@ const HeaderNew = () => {
                         <Tabs 
                             onChange={handleClickTab} 
                             indicatorColor = 'secondary' 
-                            value ={value}       
+                            value ={selectedTab}
+                                  
                         >
                            
                             <Tab 
@@ -114,6 +148,7 @@ const HeaderNew = () => {
                                 to="/about" 
                                 label= 'About Us'
                                 classes={{wrapper:classes.wrapper, root:classes.link}}
+                                // getProps={Location}
                                 />   
                           
                             <Tab

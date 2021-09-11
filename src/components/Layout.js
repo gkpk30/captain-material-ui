@@ -7,6 +7,7 @@ import {ThemeProvider} from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 
+
 const theme = createTheme({
     palette: {
         primary: {
@@ -20,36 +21,37 @@ const theme = createTheme({
    
 })
 
-const useStyles = makeStyles({
-    toolbar: theme.mixins.toolbar,
-    hero: {
-        height: '540px',
-        backgroundImage: 'url("https://source.unsplash.com/-y4dVPa8EQI/1600x900")',
-        // backgroundImage: 'url("../../static/houseMobile.jpeg")',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-    },
-    page: {
-        // marginTop: '20px',
-    },
-}) 
+// const useStyles = makeStyles({
+//     toolbar: theme.mixins.toolbar,
+//     hero: {
+//         height: '540px',
+//         backgroundImage: 'url("https://source.unsplash.com/-y4dVPa8EQI/1600x900")',
+//         // backgroundImage: 'url("../../static/houseMobile.jpeg")',
+//         backgroundRepeat: 'no-repeat',
+//         backgroundSize: 'cover',
+//     },
+//     page: {
+//         // marginTop: '20px',
+//     },
+// }) 
 
 
 
-export default function Layout({children}) {
-    const classes = useStyles();
+export default function Layout({children , location}) {
+    // const classes = useStyles();
+    console.log("location of Layout" , location)
     return (
-        <div>
+        <>
              <CssBaseline />
-           <ThemeProvider theme = {theme}>
+           <ThemeProvider theme = {theme} >
               
-                    <HeaderNew />                  
-                    <div className={classes.page}>
+                    <HeaderNew location ={location} />                  
+                    <div>
                         {children}
                     </div>
             </ThemeProvider>
            
-        </div>
+        </>
         
     )
 }
